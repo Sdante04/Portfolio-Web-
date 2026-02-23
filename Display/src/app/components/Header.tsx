@@ -85,10 +85,16 @@ export function Header() {
               Ver proyectos
             </motion.button>
             <motion.a
-              href="#"
+              href="/santiago_cv.pdf"
+              download="Santiago_Dante_CV.pdf"
+              onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                handleDownloadCV(e);
+              }}
               className="px-4 py-2 text-sm bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/20 transition-all flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label="Descargar CV"
             >
               <Download className="w-4 h-4" />
               Descargar CV
