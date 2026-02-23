@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full py-12 sm:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div>
             <motion.div
@@ -99,7 +99,7 @@ export function Hero() {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative"
+            className="relative z-30"
           >
             <div className="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 backdrop-blur-xl border border-zinc-700/50 rounded-2xl p-6 shadow-2xl">
               {/* Header */}
@@ -168,6 +168,17 @@ export function Hero() {
             {/* Glow effect */}
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full" />
           </motion.div>
+
+          {/* Rocket GIF (background, behind the mini dashboard). */}
+          {/* Place your gif at public/rocket.gif or change the src below. */}
+            <motion.img
+              src="/rocket.gif"
+              alt="Rocket gif"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="pointer-events-none select-none absolute z-20 -top-32 right-0 w-32 md:w-40 opacity-100"
+            />
         </div>
       </div>
     </section>

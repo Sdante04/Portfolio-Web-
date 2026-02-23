@@ -109,30 +109,42 @@ export function Contact() {
             {/* Social Links */}
             <div className="pt-4 space-y-3">
               <h4 className="text-white font-bold mb-4">Enlaces</h4>
-              <div className="flex gap-3">
-                <motion.a
-                  href="https://www.linkedin.com/in/santiago-dante-couto-bb5b09297/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all group"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
-                  <span className="text-white text-sm">LinkedIn</span>
-                </motion.a>
-                
-                <motion.a
-                  href="https://github.com/Sdante04"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-violet-500/50 hover:bg-violet-500/5 transition-all group"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Github className="w-5 h-5 text-zinc-400 group-hover:text-violet-400 transition-colors" />
-                  <span className="text-white text-sm">GitHub</span>
-                </motion.a>
+              <div className="relative">
+                <div className="flex gap-3">
+                  <motion.a
+                    href="https://www.linkedin.com/in/santiago-dante-couto-bb5b09297/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all group"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Linkedin className="w-5 h-5 text-zinc-400 group-hover:text-cyan-400 transition-colors" />
+                    <span className="text-white text-sm">LinkedIn</span>
+                  </motion.a>
+                  
+                  <motion.a
+                    href="https://github.com/Sdante04"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-violet-500/50 hover:bg-violet-500/5 transition-all group"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Github className="w-5 h-5 text-zinc-400 group-hover:text-violet-400 transition-colors" />
+                    <span className="text-white text-sm">GitHub</span>
+                  </motion.a>
+                </div>
+
+                {/* Contact gif below the social buttons. Place file at public/contact.gif */}
+                <motion.img
+                  src="/contact.gif"
+                  alt="Contact gif"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  className="pointer-events-none select-none absolute top-full left-1/2 -translate-x-1/2 mt-4 w-36 md:w-44 opacity-100"
+                />
               </div>
             </div>
           </motion.div>

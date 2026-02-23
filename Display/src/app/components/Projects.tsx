@@ -64,14 +64,16 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.2 }}
-          className="mb-12"
+          className="mb-12 relative"
         >
-          <div className="relative bg-gradient-to-br from-zinc-900 to-zinc-800 border border-cyan-500/30 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all">
+          <div className="relative z-10 bg-gradient-to-br from-zinc-900 to-zinc-800 border border-cyan-500/30 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all">
             {/* Featured Badge */}
             <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded-full text-cyan-400 text-xs flex items-center gap-1">
               <Sparkles className="w-3 h-3" />
               Featured
             </div>
+
+            {/* Project gif above the card (right) - placed after the card so it layers on top. */}
 
             <div className="p-8 lg:p-12">
               <div className="grid lg:grid-cols-2 gap-8">
@@ -195,7 +197,16 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
             {/* Glow Effect */}
             <div className="absolute -z-10 bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-cyan-500/10 blur-3xl group-hover:bg-cyan-500/20 transition-all" />
           </div>
-        </motion.div>
+            {/* Project gif positioned above the card so it appears on top. */}
+            <motion.img
+              src="/project.gif"
+              alt="Project gif"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="pointer-events-none select-none absolute -top-20 right-6 w-28 md:w-36 opacity-100 -z-10"
+            />
+          </motion.div>
 
         {/* Other Projects Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

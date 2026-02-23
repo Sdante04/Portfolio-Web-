@@ -67,7 +67,16 @@ export function About() {
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="relative grid lg:grid-cols-2 gap-12 items-start">
+            {/* About gif between columns: place file at public/about.gif */}
+            <motion.img
+              src="/About.gif"
+              alt="About gif"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="pointer-events-none select-none absolute bottom-12 left-[36%] lg:left-[38%] -translate-x-1/2 w-48 md:w-56 opacity-100"
+            />
             {/* Left Column - About Text */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
