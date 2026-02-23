@@ -52,7 +52,7 @@ export function InteractiveLab() {
             </span>
           </h2>
           <p className="text-zinc-400 text-lg max-w-3xl mx-auto">
-            Exploración interactiva de la arquitectura y capacidades técnicas
+            Exploración interactiva de un ejemplo de la arquitectura y capacidades técnicas
           </p>
         </motion.div>
 

@@ -3,11 +3,28 @@ import { useInView } from 'motion/react';
 import { useRef, useState } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Github, Check, Copy } from 'lucide-react';
 
+
 export function Contact() {
   const [copiedEmail, setCopiedEmail] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
+  const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!name.trim() || !email.trim() || !message.trim()) {
+    alert("Por favor completá nombre, email y mensaje.");
+    return;
+  }
+  const subject = `Contacto desde portfolio - ${name}`;
+  const body = `Nombre: ${name}\nEmail: ${email}\n\nMensaje:\n${message}`;
+  const mailto = `mailto:santiagodante4@gmail.com?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+  window.location.href = mailto;
+ };
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('santiagodante4@gmail.com');
     setCopiedEmail(true);
@@ -30,7 +47,7 @@ export function Contact() {
             </span>
           </h2>
           <p className="text-zinc-400 text-lg max-w-3xl mx-auto">
-            ¿Interesado en colaborar? Estoy abierto a nuevas oportunidades y proyectos
+            ¿Interesado en colaborar? Estoy abierto a nuevas oportunidades laborales y proyectos
           </p>
         </motion.div>
 
@@ -76,24 +93,6 @@ export function Contact() {
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="bg-zinc-800/50 backdrop-blur border border-zinc-700/50 rounded-xl p-6 hover:border-violet-500/30 transition-all group">
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-violet-500/20 to-violet-500/5 rounded-lg flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <Phone className="w-6 h-6 text-violet-400" />
-                </div>
-                <div className="flex-1">
-                  <h4 className="text-white font-bold mb-1">Teléfono</h4>
-                  <a
-                    href="tel:+59895804056"
-                    className="text-zinc-400 hover:text-violet-400 transition-colors"
-                  >
-                    +598 095 804 056
-                  </a>
-                </div>
-              </div>
-            </div>
-
             {/* Location */}
             <div className="bg-zinc-800/50 backdrop-blur border border-zinc-700/50 rounded-xl p-6 hover:border-cyan-500/30 transition-all group">
               <div className="flex items-start gap-4">
@@ -112,7 +111,7 @@ export function Contact() {
               <h4 className="text-white font-bold mb-4">Enlaces</h4>
               <div className="flex gap-3">
                 <motion.a
-                  href="#"
+                  href="https://www.linkedin.com/in/santiago-dante-couto-bb5b09297/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/5 transition-all group"
@@ -124,7 +123,7 @@ export function Contact() {
                 </motion.a>
                 
                 <motion.a
-                  href="#"
+                  href="https://github.com/Sdante04"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-zinc-800/50 border border-zinc-700/50 rounded-lg hover:border-violet-500/50 hover:bg-violet-500/5 transition-all group"
@@ -146,7 +145,8 @@ export function Contact() {
             className="bg-zinc-800/50 backdrop-blur border border-zinc-700/50 rounded-xl p-8"
           >
             <h3 className="text-xl font-bold text-white mb-6">Enviar mensaje</h3>
-            <form className="space-y-4">
+
+            <form className="space-y-4" onSubmit={handleSubmit} noValidate>
               <div>
                 <label htmlFor="name" className="block text-sm text-zinc-400 mb-2">
                   Nombre
@@ -154,8 +154,12 @@ export function Contact() {
                 <input
                   type="text"
                   id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                   className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder="Tu nombre"
+                  aria-label="Nombre"
                 />
               </div>
 
@@ -166,8 +170,12 @@ export function Contact() {
                 <input
                   type="email"
                   id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-cyan-500 transition-colors"
                   placeholder="tu@email.com"
+                  aria-label="Email"
                 />
               </div>
 
@@ -178,8 +186,12 @@ export function Contact() {
                 <textarea
                   id="message"
                   rows={5}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
                   className="w-full px-4 py-3 bg-zinc-900/50 border border-zinc-700 rounded-lg text-white focus:outline-none focus:border-cyan-500 transition-colors resize-none"
                   placeholder="¿En qué puedo ayudarte?"
+                  aria-label="Mensaje"
                 />
               </div>
 
@@ -194,7 +206,7 @@ export function Contact() {
             </form>
 
             <p className="text-zinc-500 text-xs mt-4 text-center">
-              También puedes contactarme directamente por email o teléfono
+              También puedes contactarme directamente por email
             </p>
           </motion.div>
         </div>

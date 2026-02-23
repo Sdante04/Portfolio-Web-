@@ -209,36 +209,6 @@ export function CaseStudy({ isOpen, onClose }: CaseStudyProps) {
                       </div>
                       Resultados
                     </h3>
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                      {metrics.map((metric, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ delay: 0.8 + index * 0.1 }}
-                          className={`bg-zinc-800/50 border ${
-                            metric.color === 'cyan'
-                              ? 'border-cyan-500/30'
-                              : metric.color === 'violet'
-                              ? 'border-violet-500/30'
-                              : 'border-green-500/30'
-                          } rounded-lg p-4 text-center`}
-                        >
-                          <p className="text-zinc-400 text-sm mb-2">{metric.label}</p>
-                          <p
-                            className={`text-2xl font-bold ${
-                              metric.color === 'cyan'
-                                ? 'text-cyan-400'
-                                : metric.color === 'violet'
-                                ? 'text-violet-400'
-                                : 'text-green-400'
-                            }`}
-                          >
-                            {metric.value}
-                          </p>
-                        </motion.div>
-                      ))}
-                    </div>
 
                     <div className="mt-6 p-4 bg-gradient-to-r from-cyan-500/10 to-violet-500/10 border border-cyan-500/20 rounded-lg">
                       <p className="text-zinc-300 text-sm text-center">

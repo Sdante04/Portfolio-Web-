@@ -62,12 +62,6 @@ export function Footer() {
               >
                 santiagodante4@gmail.com
               </a>
-              <a
-                href="tel:+59895804056"
-                className="block text-zinc-400 hover:text-cyan-400 transition-colors"
-              >
-                +598 095 804 056
-              </a>
               <p className="text-zinc-400">Montevideo, Uruguay</p>
             </div>
           </div>

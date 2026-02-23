@@ -209,7 +209,7 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
             >
               {project.placeholder && (
                 <div className="mb-4 px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-500 text-xs inline-block">
-                  Placeholder
+                  En proceso
                 </div>
               )}
               <h4 className="text-white font-bold mb-2 group-hover:text-cyan-400 transition-colors">

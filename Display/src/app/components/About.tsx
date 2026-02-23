@@ -28,7 +28,7 @@ const priorities = [
 
 const timeline = [
   { year: '2022', event: 'Inicio Lic. en Sistemas - ORT', highlight: true },
-  { year: '2023', event: 'First professional project' },
+  { year: '2023', event: 'Comienzo de primer proyecto personal' },
   { year: '2024', event: 'Full-stack development' },
   { year: '2025', event: 'Evalutia ML Platform', highlight: true },
 ];

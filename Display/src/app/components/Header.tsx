@@ -22,6 +22,26 @@ export function Header() {
     { label: 'Contacto', id: 'contact' },
   ];
 
+  const handleDownloadCV = async (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    try {
+      const res = await fetch("/santiago_cv.pdf");
+        if (!res.ok) throw new Error("No se pudo descargar el archivo");
+          const blob = await res.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "Santiago_Dante_CV.pdf";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          window.URL.revokeObjectURL(url);
+          } catch (err) {
+              console.error(err);
+              window.open("/santiago_cv.pdf", "_blank", "noopener noreferrer");
+          }
+  };
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -56,19 +76,6 @@ export function Header() {
 
           {/* CTAs */}
           <div className="hidden md:flex items-center gap-3">
-            <motion.button
-              onClick={() => setDemoMode(!demoMode)}
-              className={`px-3 py-2 text-sm rounded-lg transition-all flex items-center gap-2 ${
-                demoMode 
-                  ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/30' 
-                  : 'text-zinc-400 hover:text-zinc-300'
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Eye className="w-4 h-4" />
-              Demo
-            </motion.button>
             <motion.button
               onClick={() => scrollToSection('projects')}
               className="px-4 py-2 text-sm text-zinc-300 hover:text-cyan-400 transition-colors"
@@ -113,18 +120,27 @@ export function Header() {
                 {item.label}
               </button>
             ))}
+
             <div className="flex flex-col gap-2 pt-2">
               <button
-                onClick={() => scrollToSection('projects')}
+                onClick={() => scrollToSection("projects")}
                 className="px-4 py-2 text-sm text-zinc-300 hover:text-cyan-400 transition-colors text-left"
               >
                 Ver proyectos
               </button>
+
+              {/** Opción visible: anchor con download (funcionará normalmente) */}
               <a
-                href="#"
-                className="px-4 py-2 text-sm bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-lg flex items-center gap-2 justify-center"
+                href="/santiago_cv.pdf"
+                download="Santiago_Dante_CV.pdf"
+                onClick={(e) => {
+                  // prevenir doble-behavior en navegadores problemáticos y usar nuestra función robusta
+                  e.preventDefault();
+                  handleDownloadCV(e);
+                }}
+                className="inline-block px-4 py-2 bg-zinc-900/60 text-white rounded-md hover:bg-zinc-900 transition-colors text-sm"
+                aria-label="Descargar CV"
               >
-                <Download className="w-4 h-4" />
                 Descargar CV
               </a>
             </div>
