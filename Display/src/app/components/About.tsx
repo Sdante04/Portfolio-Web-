@@ -75,7 +75,7 @@ export function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.6 }}
-              className="pointer-events-none select-none absolute bottom-12 left-[36%] lg:left-[38%] -translate-x-1/2 w-48 md:w-56 opacity-100"
+              className="pointer-events-none select-none absolute bottom-0 left-[36%] lg:left-[38%] -translate-x-1/2 w-48 md:w-56 opacity-100"
             />
             {/* Left Column - About Text */}
             <motion.div
@@ -87,7 +87,8 @@ export function About() {
               <div className="prose prose-invert max-w-none">
                 <p className="text-zinc-300 leading-relaxed">
                   Soy un desarrollador full-stack con pasión por construir soluciones tecnológicas 
-                  completas, desde interfaces de usuario hasta pipelines de datos y modelos de ML. 
+                  completas, desde algunas sencillas como interfaces de usuario o paginas web hasta 
+                  mas complejas como pipelines de datos y modelos de ML. 
                   Mi enfoque combina <span className="text-cyan-400">proactividad</span>, 
                   <span className="text-violet-400"> autonomía</span> y una fuerte 
                   <span className="text-cyan-400"> orientación a la calidad</span>.

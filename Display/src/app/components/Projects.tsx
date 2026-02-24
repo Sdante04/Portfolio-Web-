@@ -197,15 +197,6 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
             {/* Glow Effect */}
             <div className="absolute -z-10 bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-cyan-500/10 blur-3xl group-hover:bg-cyan-500/20 transition-all" />
           </div>
-            {/* Project gif positioned above the card so it appears on top. */}
-            <motion.img
-              src="/project.gif"
-              alt="Project gif"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="pointer-events-none select-none absolute -top-20 right-6 w-28 md:w-36 opacity-100 -z-10"
-            />
           </motion.div>
 
         {/* Other Projects Grid */}

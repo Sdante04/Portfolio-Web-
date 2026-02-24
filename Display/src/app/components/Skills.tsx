@@ -168,24 +168,13 @@ export function Skills() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ delay: 0.7 + index * 0.05 }}
-                className="space-y-2"
+                className={`border rounded-lg p-4 hover:border-zinc-600 transition-all flex items-center justify-center text-center ${
+                  skill.color === 'cyan'
+                    ? 'border-cyan-500/30 hover:bg-cyan-500/5'
+                    : 'border-violet-500/30 hover:bg-violet-500/5'
+                }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-white font-medium text-sm">{skill.name}</span>
-                  <span className="text-zinc-400 text-xs">{skill.level}%</span>
-                </div>
-                <div className="h-1.5 bg-zinc-700/50 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={isInView ? { width: `${skill.level}%` } : {}}
-                    transition={{ delay: 0.8 + index * 0.05, duration: 0.8 }}
-                    className={`h-full ${
-                      skill.color === 'cyan'
-                        ? 'bg-gradient-to-r from-cyan-500 to-cyan-400'
-                        : 'bg-gradient-to-r from-violet-500 to-violet-400'
-                    }`}
-                  />
-                </div>
+                <span className="text-white font-medium text-sm">{skill.name}</span>
               </motion.div>
             ))}
           </div>

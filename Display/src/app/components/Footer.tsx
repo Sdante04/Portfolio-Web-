@@ -75,7 +75,6 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-2 text-zinc-500 text-sm">
               <span>Construido con foco en calidad y aprendizaje continuo</span>
-              <Heart className="w-4 h-4 text-cyan-400" fill="currentColor" />
             </div>
           </div>
         </div>
