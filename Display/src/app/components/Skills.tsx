@@ -116,7 +116,24 @@ export function Skills() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-white font-medium text-sm">{skill.name}</span>
-                          <span className="text-zinc-400 text-xs">{skill.level}%</span>
+                          {/* level badge instead of percentage */}
+                          <span
+                            className={`text-xs font-semibold px-2 py-0.5 rounded-full 
+                              ${
+                                skill.level > 80
+                                  ? 'bg-green-500/60 text-green-100'
+                                  : skill.level > 70
+                                  ? 'bg-violet-500/60 text-violet-100'
+                                  : 'bg-cyan-500/60 text-cyan-100'
+                              }
+                            `}
+                          >
+                            {skill.level > 80
+                              ? 'Avanzado'
+                              : skill.level > 70
+                              ? 'Intermedio'
+                              : 'Básico'}
+                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs text-zinc-500">
                           <span className="text-cyan-400">→</span>
@@ -126,20 +143,7 @@ export function Skills() {
                         </div>
                       </div>
                     </div>
-                    
-                    {/* Progress Bar */}
-                    <div className="h-1.5 bg-zinc-700/50 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${skill.level}%` } : {}}
-                        transition={{ delay: 0.4 + categoryIndex * 0.1 + skillIndex * 0.1, duration: 0.8 }}
-                        className={`h-full ${
-                          category.color === 'cyan'
-                            ? 'bg-gradient-to-r from-cyan-500 to-cyan-400'
-                            : 'bg-gradient-to-r from-violet-500 to-violet-400'
-                        }`}
-                      />
-                    </div>
+                    {/* end skill info */}
                   </div>
                 ))}
               </div>
