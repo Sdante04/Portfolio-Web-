@@ -11,22 +11,16 @@ const techBadges = [
 
 const otherProjects = [
   {
-    title: 'E-commerce Platform',
-    description: 'Plataforma de comercio electrónico con carrito, pagos y gestión de inventario',
-    tech: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    placeholder: true,
+    title: 'Sistema de Remates Online C# Cliente-Servidor',
+    description: 'Desarrollo de sistema de subastas online con arquitectura cliente-servidor y gestión de usuarios.',
+    tech: ['C#', 'Sockets TCP', 'MySQL', 'Windows Forms'],
+    repo: 'https://github.com/Sdante04/Sistema-de-Remates-Online-C-Cliente-Servidor-',
   },
   {
-    title: 'Task Management App',
-    description: 'Aplicación de gestión de tareas con colaboración en tiempo real',
-    tech: ['TypeScript', 'React', 'WebSockets', 'PostgreSQL'],
-    placeholder: true,
-  },
-  {
-    title: 'Analytics Dashboard',
-    description: 'Dashboard de analytics con visualizaciones interactivas y reportes',
-    tech: ['React', 'D3.js', 'Python', 'FastAPI'],
-    placeholder: true,
+    title: 'Smart Home Device Management API',
+    description: 'API REST para la administración de dispositivos de hogar inteligente y gestión de estados.',
+    tech: ['C#', 'ASP.NET', 'MySQL', 'REST API'],
+    repo: 'https://github.com/Sdante04/Smart-Home-Device-Management-API',
   },
 ];
 
@@ -50,7 +44,7 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-              Proyectos
+              Experiencia
             </span>
           </h2>
           <p className="text-zinc-400 text-lg max-w-3xl mx-auto">
@@ -58,7 +52,7 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
           </p>
         </motion.div>
 
-        {/* Featured Project */}
+        {/* Featured Experience */}
         <motion.div
           id="case-study"
           initial={{ opacity: 0, y: 30 }}
@@ -83,7 +77,7 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
                     <h3 className="text-3xl font-bold text-white mb-2">
                       Evalutia
                     </h3>
-                    <p className="text-cyan-400 mb-4">2025 • Proyecto en producción</p>
+                    <p className="text-cyan-400 mb-4">2025 • Experiencia profesional</p>
                     <p className="text-zinc-300 leading-relaxed">
                       Plataforma de predicción de ventas con ML + pipeline ETL + aplicación web. 
                       Construida desde cero en equipo de 4 desarrolladores. Operacional en{' '}
@@ -139,15 +133,15 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
                       <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                     <motion.a
-                      href="https://github.com/Evalutia/App-Forecast"
+                      href="https://evalutia.net"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="px-6 py-3 border border-zinc-600 text-zinc-300 rounded-lg hover:border-cyan-500/50 hover:text-cyan-400 transition-all flex items-center justify-center gap-2"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
-                      <Github className="w-5 h-5" />
-                      Ver Repositorio
+                      <ExternalLink className="w-5 h-5" />
+                      Ver sitio
                     </motion.a>
                   </div>
                 </div>
@@ -199,28 +193,31 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
           </div>
           </motion.div>
 
-        {/* Other Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="text-center mt-16 mb-10">
+          <p className="text-lg sm:text-xl uppercase tracking-[0.35em] text-cyan-400 font-semibold">
+            Proyectos
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {otherProjects.map((project, index) => (
-            <motion.div
+            <motion.a
               key={index}
+              href={project.repo}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4 + index * 0.1 }}
-              className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 hover:border-zinc-700 hover:bg-zinc-800/50 transition-all group cursor-pointer"
+              className="block bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 hover:border-cyan-500/50 hover:bg-zinc-800/60 transition-all group"
             >
-              {project.placeholder && (
-                <div className="mb-4 px-2 py-1 bg-zinc-800 border border-zinc-700 rounded text-zinc-500 text-xs inline-block">
-                  En proceso
-                </div>
-              )}
               <h4 className="text-white font-bold mb-2 group-hover:text-cyan-400 transition-colors">
                 {project.title}
               </h4>
               <p className="text-zinc-400 text-sm mb-4 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tech.map((tech) => (
                   <span
                     key={tech}
@@ -230,7 +227,11 @@ export function Projects({ onExpandCaseStudy }: ProjectsProps) {
                   </span>
                 ))}
               </div>
-            </motion.div>
+              <div className="inline-flex items-center gap-2 text-cyan-400 text-sm font-medium">
+                <Github className="w-4 h-4" />
+                Ver repositorio
+              </div>
+            </motion.a>
           ))}
         </div>
       </div>

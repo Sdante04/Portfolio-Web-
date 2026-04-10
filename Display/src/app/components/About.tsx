@@ -30,7 +30,7 @@ const timeline = [
   { year: '2022', event: 'Inicio Lic. en Sistemas - ORT', highlight: true },
   { year: '2023', event: 'Comienzo de primer proyecto personal' },
   { year: '2024', event: 'Full-stack development' },
-  { year: '2025', event: 'Evalutia ML Platform', highlight: true },
+  { year: '2025', event: 'Experiencia profesional en Evalutia', highlight: true },
 ];
 
 export function About() {
@@ -68,15 +68,6 @@ export function About() {
           </div>
 
           <div className="relative grid lg:grid-cols-2 gap-12 items-start">
-            {/* About gif between columns: place file at public/about.gif */}
-            <motion.img
-              src="/About.gif"
-              alt="About gif"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="pointer-events-none select-none absolute bottom-0 left-[36%] lg:left-[38%] -translate-x-1/2 w-48 md:w-56 opacity-100"
-            />
             {/* Left Column - About Text */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -101,8 +92,8 @@ export function About() {
                 </p>
                 <p className="text-zinc-300 leading-relaxed">
                   Actualmente cursando el 8º semestre de Licenciatura en Sistemas en Universidad ORT, 
-                  he trabajado en proyectos reales que integran desarrollo web, procesamiento de datos 
-                  y machine learning, siempre con énfasis en TDD, Git Flow y mejores prácticas.
+                  cuento con experiencia profesional en Evalutia, donde integré desarrollo web, 
+                  procesamiento de datos y machine learning con énfasis en TDD, Git Flow y mejores prácticas.
                 </p>
               </div>
 

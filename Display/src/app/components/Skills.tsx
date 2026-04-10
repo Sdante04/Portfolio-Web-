@@ -9,10 +9,10 @@ const skillCategories = [
     icon: Code2,
     color: 'cyan',
     skills: [
-      { name: 'React', level: 90, used: 'Evalutia', evidence: 'SPA con estado complejo' },
-      { name: 'TypeScript', level: 85, used: 'Evalutia', evidence: 'Type-safe development' },
-      { name: 'CSS/Tailwind', level: 80, used: 'Evalutia', evidence: 'Diseño responsive' },
-      { name: 'Angular', level: 70, used: 'Proyectos académicos', evidence: 'Enterprise apps' },
+      { name: 'React', used: 'Evalutia', evidence: 'SPA con estado complejo' },
+      { name: 'TypeScript', used: 'Evalutia', evidence: 'Desarrollo tipado y escalable' },
+      { name: 'HTML / CSS', used: 'CV projects', evidence: 'Interfaces responsivas y accesibles' },
+      { name: 'Tailwind CSS', used: 'Evalutia', evidence: 'Diseño rápido y consistente' },
     ],
   },
   {
@@ -20,9 +20,9 @@ const skillCategories = [
     icon: Database,
     color: 'violet',
     skills: [
-      { name: 'C# / ASP.NET', level: 85, used: 'Evalutia', evidence: 'REST API + JWT auth' },
-      { name: 'SQL / MySQL', level: 85, used: 'Evalutia', evidence: 'Queries optimizadas' },
-      { name: 'Authentication', level: 80, used: 'Evalutia', evidence: 'JWT + hashing' },
+      { name: 'C# / ASP.NET', used: 'Evalutia', evidence: 'APIs REST con seguridad y manejo de datos' },
+      { name: 'SQL / MySQL', used: 'CV projects', evidence: 'Modelado relacional y consultas optimizadas' },
+      { name: 'REST APIs', used: 'CV projects', evidence: 'Servicios backend para integración de clientes' },
     ],
   },
   {
@@ -30,10 +30,10 @@ const skillCategories = [
     icon: Database,
     color: 'cyan',
     skills: [
-      { name: 'Python', level: 80, used: 'Evalutia', evidence: 'ML pipelines' },
-      { name: 'Machine Learning', level: 75, used: 'Evalutia', evidence: 'Forecasting models' },
-      { name: 'Pentaho / Kettle', level: 75, used: 'Evalutia', evidence: 'ETL incremental' },
-      { name: 'Data Processing', level: 80, used: 'Evalutia', evidence: 'Batch processing' },
+      { name: 'Python', used: 'Evalutia', evidence: 'Pipelines y scripts de datos' },
+      { name: 'Machine Learning', used: 'Evalutia', evidence: 'Modelos de predicción y análisis de datos' },
+      { name: 'Pentaho / Kettle', used: 'Evalutia', evidence: 'ETL y orquestación de datos' },
+      { name: 'Data Processing', used: 'CV projects', evidence: 'Transformación y limpieza de datos' },
     ],
   },
   {
@@ -41,10 +41,10 @@ const skillCategories = [
     icon: Cloud,
     color: 'violet',
     skills: [
-      { name: 'Docker', level: 80, used: 'Evalutia', evidence: 'Containerización' },
-      { name: 'AWS', level: 70, used: 'Evalutia', evidence: 'EC2, RDS, S3' },
-      { name: 'Git / Git Flow', level: 85, used: 'Evalutia', evidence: 'Branching strategy' },
-      { name: 'CI/CD', level: 75, used: 'Evalutia', evidence: 'Automated deployment' },
+      { name: 'Docker', used: 'Evalutia', evidence: 'Contenedores para despliegues reproducibles' },
+      { name: 'AWS', used: 'Evalutia', evidence: 'Despliegue y gestión en la nube' },
+      { name: 'Git', used: 'Evalutia', evidence: 'Control de versiones y workflows colaborativos' },
+      { name: 'CI/CD', used: 'Evalutia', evidence: 'Integración y despliegue automatizado' },
     ],
   },
 ];
@@ -116,24 +116,6 @@ export function Skills() {
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-white font-medium text-sm">{skill.name}</span>
-                          {/* level badge instead of percentage */}
-                          <span
-                            className={`text-xs font-semibold px-2 py-0.5 rounded-full 
-                              ${
-                                skill.level > 80
-                                  ? 'bg-green-500/60 text-green-100'
-                                  : skill.level > 70
-                                  ? 'bg-violet-500/60 text-violet-100'
-                                  : 'bg-cyan-500/60 text-cyan-100'
-                              }
-                            `}
-                          >
-                            {skill.level > 80
-                              ? 'Avanzado'
-                              : skill.level > 70
-                              ? 'Intermedio'
-                              : 'Básico'}
-                          </span>
                         </div>
                         <div className="flex items-center gap-2 text-xs text-zinc-500">
                           <span className="text-cyan-400">→</span>

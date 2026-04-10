@@ -136,15 +136,6 @@ export function Contact() {
                   </motion.a>
                 </div>
 
-                {/* Contact gif below the social buttons. Place file at public/contact.gif */}
-                <motion.img
-                  src="/contact.gif"
-                  alt="Contact gif"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="pointer-events-none select-none absolute top-full left-1/2 -translate-x-1/2 mt-4 w-36 md:w-44 opacity-100"
-                />
               </div>
             </div>
           </motion.div>

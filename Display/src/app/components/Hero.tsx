@@ -169,16 +169,6 @@ export function Hero() {
             <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/20 blur-3xl rounded-full" />
           </motion.div>
 
-          {/* Rocket GIF (background, behind the mini dashboard). */}
-          {/* Place your gif at public/rocket.gif or change the src below. */}
-            <motion.img
-              src="/rocket.gif"
-              alt="Rocket gif"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="pointer-events-none select-none absolute z-20 -top-32 right-0 w-32 md:w-40 opacity-100"
-            />
         </div>
       </div>
     </section>

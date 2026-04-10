@@ -85,7 +85,7 @@ export function Education() {
 
             <div className="relative">
               {/* Timeline Line */}
-              <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-violet-500 to-transparent" />
+              <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-500 via-violet-500 to-transparent z-0" />
 
               <div className="space-y-8">
                 {education.map((edu, index) => (
@@ -98,7 +98,7 @@ export function Education() {
                   >
                     {/* Timeline Dot */}
                     <div
-                      className={`absolute left-0 w-10 h-10 rounded-lg flex items-center justify-center ${
+                      className={`absolute left-0 w-10 h-10 rounded-lg flex items-center justify-center z-20 ${
                         edu.highlight
                           ? 'bg-gradient-to-br from-cyan-500/30 to-violet-500/30 border-2 border-cyan-500/50'
                           : 'bg-zinc-800/50 border border-zinc-700'

@@ -48,7 +48,7 @@ export function InteractiveLab() {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
-              Probá mi código
+              Maqueta interactiva
             </span>
           </h2>
           <p className="text-zinc-400 text-lg max-w-3xl mx-auto">
