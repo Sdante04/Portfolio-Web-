@@ -118,7 +118,7 @@ export function InteractiveLab() {
   });
 
   return (
-    <section id="interactive-lab" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-900/50">
+    <section id="interactive-lab" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

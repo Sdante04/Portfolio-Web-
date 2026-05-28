@@ -17,7 +17,7 @@ export default function App() {
   const [caseStudyOpen, setCaseStudyOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white font-['Inter',sans-serif] relative">
+    <div className="min-h-screen bg-transparent text-white font-['Inter',sans-serif] relative">
       {/* Background Effects */}
       <BackgroundEffects />
 
@@ -25,11 +25,17 @@ export default function App() {
       
       <main>
         <Hero />
+        <div className="h-24" />
         <About />
+        <div className="h-24" />
         <Projects onExpandCaseStudy={() => setCaseStudyOpen(true)} />
+        <div className="h-24" />
         <Skills />
+        <div className="h-24" />
         <Education />
+        <div className="h-24" />
         <InteractiveLab />
+        <div className="h-24" />
         <Contact />
       </main>
 

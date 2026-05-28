@@ -35,7 +35,7 @@ export function About() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="about" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-900/50">
+    <section id="about" ref={ref} className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
