@@ -11,6 +11,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { ScrollToTop } from './components/ScrollToTop';
 import { BackgroundEffects } from './components/BackgroundEffects';
+import { CursorGlow } from './components/CursorGlow';
 
 export default function App() {
   const [caseStudyOpen, setCaseStudyOpen] = useState(false);
@@ -39,6 +40,9 @@ export default function App() {
 
       {/* Scroll to Top Button */}
       <ScrollToTop />
+
+      {/* Custom cursor glow (desktop only) */}
+      <CursorGlow />
     </div>
   );
 }

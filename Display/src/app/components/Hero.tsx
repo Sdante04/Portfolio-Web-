@@ -1,10 +1,13 @@
-import { motion } from 'motion/react';
+import { useRef } from 'react';
+import { motion, useInView } from 'motion/react';
 import { ArrowRight, TrendingUp } from 'lucide-react';
 import { LineChart, Line, ResponsiveContainer, Tooltip } from 'recharts';
+import { useCountUp } from '../hooks/useCountUp';
+import { MagneticButton } from './MagneticButton';
 
 const techStack = [
-  'React', 'TypeScript', 'C#', 'ASP.NET', 'MySQL/SQL', 
-  'Python', 'ML', 'Pentaho/Kettle', 'Docker', 'AWS', 'Git'
+  'React', 'TypeScript', 'C#', 'ASP.NET', 'MySQL/SQL',
+  'Python', 'ML', 'Pentaho/Kettle', 'Docker', 'AWS', 'Git',
 ];
 
 const mockData = [
@@ -16,89 +19,124 @@ const mockData = [
   { name: 'Jun', value: 5800 },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+};
+
+function KpiCounter({
+  value,
+  suffix = '',
+  decimals = 0,
+  active,
+}: {
+  value: number;
+  suffix?: string;
+  decimals?: number;
+  active: boolean;
+}) {
+  const count = useCountUp(value, 1600, active, decimals);
+  const display = decimals > 0 ? count.toFixed(decimals) : Math.round(count).toLocaleString();
+  return (
+    <span>
+      {display}{suffix}
+    </span>
+  );
+}
+
 export function Hero() {
+  const dashboardRef = useRef(null);
+  const dashboardInView = useInView(dashboardRef, { once: true, amount: 0.5 });
+
   return (
     <section className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto w-full py-12 sm:py-20">
         <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
           {/* Left Content */}
-          <div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm"
-              >
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={itemVariants}>
+              <div className="inline-block px-4 py-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full text-cyan-400 text-sm">
                 Full-Stack Developer • ML Enthusiast • DevOps
-              </motion.div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
-                  Construyo software
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
-                  end-to-end
-                </span>
-              </h1>
-
-              <p className="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed">
-                Web, datos y predicción. Estudiante avanzado de{' '}
-                <span className="text-cyan-400">Licenciatura en Sistemas</span>{' '}
-                (Universidad ORT, 2022–Actualidad, 8º semestre) con experiencia 
-                en desarrollo full-stack, ML y DevOps.
-              </p>
-
-              {/* Tech Stack Badges */}
-              <div className="flex flex-wrap gap-2">
-                {techStack.map((tech, index) => (
-                  <motion.span
-                    key={tech}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + index * 0.05 }}
-                    className="px-3 py-1 bg-zinc-800/50 border border-zinc-700/50 rounded-md text-zinc-300 text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all cursor-default"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
               </div>
+            </motion.div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <motion.h1
+              variants={itemVariants}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mt-6"
+            >
+              <span className="bg-gradient-to-r from-white via-zinc-100 to-zinc-300 bg-clip-text text-transparent">
+                Construyo software
+              </span>
+              <br />
+              <span className="bg-gradient-to-r from-cyan-400 via-violet-400 to-cyan-400 bg-clip-text text-transparent">
+                end-to-end
+              </span>
+            </motion.h1>
+
+            <motion.p
+              variants={itemVariants}
+              className="text-base sm:text-lg lg:text-xl text-zinc-400 leading-relaxed mt-6"
+            >
+              Web, datos y predicción. Estudiante avanzado de{' '}
+              <span className="text-cyan-400">Licenciatura en Sistemas</span>{' '}
+              (Universidad ORT, 2022–Actualidad, 8º semestre) con experiencia
+              en desarrollo full-stack, ML y DevOps.
+            </motion.p>
+
+            {/* Tech Stack Badges */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-2 mt-6">
+              {techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 bg-zinc-800/50 border border-zinc-700/50 rounded-md text-zinc-300 text-sm hover:border-cyan-500/50 hover:text-cyan-400 transition-all cursor-default"
+                >
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 pt-6">
+              <MagneticButton>
                 <motion.button
                   onClick={() => document.getElementById('case-study')?.scrollIntoView({ behavior: 'smooth' })}
                   className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-lg hover:shadow-lg hover:shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   Explorar caso Evalutia
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </motion.button>
-                
+              </MagneticButton>
+
+              <MagneticButton>
                 <motion.button
                   onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                   className="px-6 py-3 border border-cyan-500/50 text-cyan-400 rounded-lg hover:bg-cyan-500/10 transition-all flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
                 >
                   Ver proyectos
                 </motion.button>
-              </div>
+              </MagneticButton>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* Right Content - Mini Dashboard */}
           <motion.div
+            ref={dashboardRef}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="relative z-30"
           >
             <div className="bg-gradient-to-br from-zinc-900/90 to-zinc-800/90 backdrop-blur-xl border border-zinc-700/50 rounded-2xl p-6 shadow-2xl">
@@ -114,11 +152,13 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* KPI Cards */}
+              {/* KPI Cards with counter animation */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-zinc-800/50 backdrop-blur rounded-lg p-4 border border-zinc-700/30">
                   <p className="text-zinc-400 text-xs mb-1">Precisión promedio</p>
-                  <p className="text-2xl font-bold text-cyan-400">91.4%</p>
+                  <p className="text-2xl font-bold text-cyan-400">
+                    <KpiCounter value={91.4} decimals={1} suffix="%" active={dashboardInView} />
+                  </p>
                   <div className="flex items-center gap-1 text-green-400 text-xs mt-1">
                     <TrendingUp className="w-3 h-3" />
                     +5.2%
@@ -126,7 +166,9 @@ export function Hero() {
                 </div>
                 <div className="bg-zinc-800/50 backdrop-blur rounded-lg p-4 border border-zinc-700/30">
                   <p className="text-zinc-400 text-xs mb-1">SKUs procesados</p>
-                  <p className="text-2xl font-bold text-violet-400">1,247</p>
+                  <p className="text-2xl font-bold text-violet-400">
+                    <KpiCounter value={1247} active={dashboardInView} />
+                  </p>
                   <div className="flex items-center gap-1 text-green-400 text-xs mt-1">
                     <TrendingUp className="w-3 h-3" />
                     +18
